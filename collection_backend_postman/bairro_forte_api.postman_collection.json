@@ -1,0 +1,759 @@
+{
+	"info": {
+		"_postman_id": "387b609c-2706-4c91-acdc-f1ecb5ff08fa",
+		"name": "bairro_forte_api",
+		"description": "Lembrando que o token utilizado para validação deve ser gerado conforme descrito no Readme do projeto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47325922"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "privacidade",
+					"item": [
+						{
+							"name": "privacidade",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/users/me/privacy",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"users",
+										"me",
+										"privacy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "alterar privacidade",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"show_info_in_groups\": true,\r\n    \"share_reported_info\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ambiente}}/users/me/privacy",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"users",
+										"me",
+										"privacy"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "configurações",
+					"item": [
+						{
+							"name": "buscar",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/user-settings/user",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"user-settings",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adicionar/alterar",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"radius_km\":\"5\",//raio em kms para receber notificações\r\n    \"category\":[\"Vandalismo\",\"Furto\"],//Vandalismo,Outros,Roubo,Furto\r\n    \"group_only\":false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ambiente}}/user-settings",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"user-settings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "cameras",
+					"item": [
+						{
+							"name": "cameras do usuário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/cameras/me",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"cameras",
+										"me"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "incidentes",
+					"item": [
+						{
+							"name": "incidentes do usuario",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/incidentes/me",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"incidentes",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletar um incidente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/incidentes/:incidentId",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"incidentes",
+										":incidentId"
+									],
+									"variable": [
+										{
+											"key": "incidentId",
+											"value": "60"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "atualizar um incidente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"latitude\": \"-51.478\",\r\n    \"longitude\": \"-25.552\",\r\n    \"type\": \"Roubo\",\r\n    \"description\": \"Um roubo proximo a tal lugar 23\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ambiente}}/incidentes/:incidentId",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"incidentes",
+										":incidentId"
+									],
+									"variable": [
+										{
+											"key": "incidentId",
+											"value": "61"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "grupos",
+					"item": [
+						{
+							"name": "grupos do usuário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/groups/me",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"groups",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sair do grupo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"group_id\": 7\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ambiente}}/groups/leave",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"groups",
+										"leave"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "entrar no grupo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/groups/:idGrupo/join",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"groups",
+										":idGrupo",
+										"join"
+									],
+									"variable": [
+										{
+											"key": "idGrupo",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grupos do bairro disponiveis na minha cidade",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{tokenFirebase}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{ambiente}}/groups/available",
+									"host": [
+										"{{ambiente}}"
+									],
+									"path": [
+										"groups",
+										"available"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "cadastrar usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\" Usuario de teste 01\",\r\n    \"email\":\"<email utilizado para cadastro no firebase>\",\r\n    \"role\":\"Morador\",\r\n    \"gender\":\"Masculino\",//Feminino\r\n    \"latitude\":\"-25.562\",//latitude do usuário no momento de cadastro\r\n    \"longitude\":\"-51.488\",//longitude do usuário no momento de cadastro\r\n    \"city_id\": 4109401,//Guarapauava\r\n    \"phone\":\"42984259673\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ambiente}}/users",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterar dados do usuário",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenFirebase}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\" Usuario de teste 01\",\r\n    \"latitude\":\"-25.562\",\r\n    \"longitude\":\"-51.488\",\r\n    \"city_id\": 4109401,\r\n    \"phone\":\"42984259676\",\r\n    \"show_info_in_groups\":true,\r\n    \"share_reported_info\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ambiente}}/users/me/profile",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dados do usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenFirebase}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ambiente}}/users/me/profile",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cameras",
+			"item": [
+				{
+					"name": "buscar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenFirebase}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ambiente}}/cameras",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"cameras"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "incidentes",
+			"item": [
+				{
+					"name": "buscar incidentes/cameras para o mapa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenFirebase}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ambiente}}/incidents?longitude=-51.488&latitude= -25.562&raio=100&type=[\"Roubo\",\"Furto\"]",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"incidents"
+							],
+							"query": [
+								{
+									"key": "longitude",
+									"value": "-51.488"
+								},
+								{
+									"key": "latitude",
+									"value": " -25.562"
+								},
+								{
+									"key": "raio",
+									"value": "100"
+								},
+								{
+									"key": "type",
+									"value": "[\"Roubo\",\"Furto\"]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenFirebase}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitude\": \"-25.552\",\r\n    \"longitude\": \"-51.478\",\r\n    \"type\": \"Roubo\",\r\n    \"description\": \"Um roubo proximo a tal lugar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ambiente}}/incidents",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"incidents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reportar falha",
+			"item": [
+				{
+					"name": "enviar falha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenFirebase}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\":\"Não consigo acessar meus incidentes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ambiente}}/reports/app-failure",
+							"host": [
+								"{{ambiente}}"
+							],
+							"path": [
+								"reports",
+								"app-failure"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "localidades",
+			"item": [
+				{
+					"name": "municipios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/:uf/municipios",
+							"protocol": "https",
+							"host": [
+								"servicodados",
+								"ibge",
+								"gov",
+								"br"
+							],
+							"path": [
+								"api",
+								"v1",
+								"localidades",
+								"estados",
+								":uf",
+								"municipios"
+							],
+							"variable": [
+								{
+									"key": "uf",
+									"value": "41"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "estados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
+							"protocol": "https",
+							"host": [
+								"servicodados",
+								"ibge",
+								"gov",
+								"br"
+							],
+							"path": [
+								"api",
+								"v1",
+								"localidades",
+								"estados"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "ambiente",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "tokenFirebase",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
